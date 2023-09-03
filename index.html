@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bilateral</title>
+    <style>
+h1, h2, h3 {
+  color: darkgreen;
+}
+a {
+  color: lightgreen;
+}
+
+a:hover {
+  color: green;
+  cursor: pointer;
+}
+
+a:active {
+  color: darkgreen;
+  cursor: pointer;
+}
+    </style>
+  </head>
+  <body style="text-align: center">
+    <h1>Bilateral</h1>
+    <h3 id="now-playing">dan_mayo_funk.mp3</h3>
+    <audio id="player" controls style="width: 80%">
+      <source src="dan_mayo_funk.mp3" type="audio/mpeg" preload="meta" />
+    </audio>
+    <h2>Pick a song:</h2>
+    <ul style="list-style: none">
+      <li>
+        <a onclick="updateSource(this.innerHTML);">dan_mayo_funk.mp3</a>
+      </li>
+      <li>
+        <a onclick="updateSource(this.innerHTML);">dan_mayo_hip_hop.mp3</a>
+      </li>
+    </ul>
+    <script>
+function updateSource(songPath){ 
+  const audio = document.getElementById('player');
+  audio.src = songPath;
+  audio.load();
+
+  const nowPlaying = document.getElementById('now-playing');
+  nowPlaying.innerText = songPath;
+}
+    </script>
+  </body>
+</html>

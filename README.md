@@ -1,2 +1,2 @@
-# bilateral
+# Bilateral
 POC of bilateral audio platform
