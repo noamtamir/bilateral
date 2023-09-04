@@ -25,23 +25,35 @@ a:active {
   </head>
   <body style="text-align: center">
     <h1>Bilateral</h1>
-    <h3 id="now-playing">dan_mayo_funk.mp3</h3>
+    <h3 id="now-playing"></h3>
     <audio id="player" controls style="width: 80%">
-      <source src="dan_mayo_funk.mp3" type="audio/mpeg" preload="meta" />
+      <source type="audio/mpeg" />
     </audio>
-    <h2>Pick a song:</h2>
-    <ul style="list-style: none">
-      <li>
-        <a onclick="updateSource(this.innerHTML);">dan_mayo_funk.mp3</a>
-      </li>
-      <li>
-        <a onclick="updateSource(this.innerHTML);">dan_mayo_hip_hop.mp3</a>
-      </li>
-    </ul>
+    <ul id="track-list" style="list-style: none"></ul>
     <script>
+const DIR = 'BeLateral-meditation';
+const TRACKS = [
+  'BeLateral - srikat goof - avigail gerz.mp3',
+  'טל אנגרט  -   מאפייני הקיוםBeLateral .mp3',
+  'טל אנגרט  -  פעולה אנושית משותפת  BeLateral.mp3',
+  'קרן שפי - חמלה לעצמי ולדמות קשהBeLateral.mp3',
+  'אסף סטי חמלה - BeLateral.mp3',
+  'אסף פדרמן - 15 דק סריקת גוף BeLateral.mp3'
+];
+
+const trackList = document.getElementById("track-list");
+for (const trackName of TRACKS) {
+  const a = document.createElement("a")
+  a.appendChild(document.createTextNode(trackName));
+  a.setAttribute('onclick', 'updateSource(this.innerHTML);')
+  const li = document.createElement("li");
+  li.appendChild(a)
+  trackList.appendChild(li)
+}
+
 function updateSource(songPath){ 
   const audio = document.getElementById('player');
-  audio.src = songPath;
+  audio.src = `${DIR}/${songPath}`;
   audio.load();
 
   const nowPlaying = document.getElementById('now-playing');
